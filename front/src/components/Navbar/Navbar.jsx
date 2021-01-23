@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import memories from "../../images/memories.png";
+import story from "../../images/story.png";
 import useStyle from "./styles";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
@@ -38,7 +38,7 @@ const Navbar = () => {
         >
           My Story
         </Typography>
-        <img className={classes.image} src={memories} alt="memories" />
+        <img className={classes.image} src={story} alt="story" />
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (
