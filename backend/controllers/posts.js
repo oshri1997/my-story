@@ -11,6 +11,7 @@ export const getPosts = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
+  if (!req.userId) return res.json({ message: "Unauthenticated" });
   const post = req.body;
 
   const newPost = new PostMessage({
@@ -27,6 +28,7 @@ export const createPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
+  if (!req.userId) return res.json({ message: "Unauthenticated" });
   const { id: _id } = req.params;
   const post = req.body;
   if (!mongoose.Types.ObjectId.isValid(_id))
@@ -40,6 +42,7 @@ export const updatePost = async (req, res) => {
 };
 
 export const deletePost = async (req, res) => {
+  if (!req.userId) return res.json({ message: "Unauthenticated" });
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send("No post with that id");

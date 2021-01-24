@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import dotenv from "dotenv";
 import {
   Avatar,
   Button,
@@ -27,8 +26,6 @@ const initState = {
 
 const Auth = () => {
   const classes = useStyles();
-  dotenv.config();
-  console.log(process.env.REACT_APP_GOOGLE);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState(initState);
@@ -54,8 +51,8 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  const googleFailure = () => {
-    alert("Google Sign in was unsuccessful.Try again later");
+  const googleFailure = (error) => {
+    console.log("Google Sign in was unsuccessful.Try again later", error);
   };
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
